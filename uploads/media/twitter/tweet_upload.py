@@ -68,4 +68,4 @@ else:
         
 df = pd.DataFrame(list(zip(usr_screen_name, tweet_id, tweet_time, tweet_text, retweet_count, like_count)),
                   columns = ['User Screen Name', 'Tweet Id', 'Tweet Time', 'Tweet Text', 'Retweet Count', 'Like Count'])
-df.to_excel("uploads//media//twitter//tweets.xlsx", index=False)
+df.to_excel("uploads//media//twitter//user_tweets.xlsx", index=False)

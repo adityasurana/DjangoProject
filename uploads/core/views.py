@@ -67,7 +67,6 @@ def tweet(request):
     b=a[0:]
     c=b[0:]
     d=c[:-2]
-    print(d)
     return render(request, 'core/twitter_tool.html',{'data4':d})
 
 
