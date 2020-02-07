@@ -1,11 +1,11 @@
 import pandas as pd
 
 # Reading excel file "Profiling_data.xlsx", Sheet Name="Bio" with dataframe name as 'kol'  
-kol = pd.read_excel("C://Users//hi//django_project//uploads//media//profiling_data.xlsx", "Bio")
+kol = pd.read_excel("uploads//media//profiling_data.xlsx", "Bio")
 kol_name = kol['KOL Name'].unique() #storing all unique names from the excel to a list name 'kol_name'
 
 #opening and reading "input_profiling.txt"file
-file = open("C://Users//hi//django_project//uploads//media//input_profiling.txt", "r")
+file = open("uploads//media//input_profiling.txt", "r")
 
 #Initializing some lists to store different column values in the output ranking file
 kol_score =                    [0]*len(kol_name)
@@ -54,7 +54,7 @@ for line in file:
     filename = data[0]
     
     # Passing the Sheet name to read the data from
-    kol = pd.read_excel("C://Users//hi//django_project//uploads//media//profiling_data.xlsx", filename)
+    kol = pd.read_excel("uploads//media//profiling_data.xlsx", filename)
     
     eventcount = []
     
@@ -160,7 +160,7 @@ for line in file:
         Social_Media = eventcount
         Social_Media_aggregate = aggregate_eventcount
                               
-kol = pd.read_excel("C://Users//hi//django_project//uploads//media//profiling_data.xlsx", "Bio")
+kol = pd.read_excel("uploads//media//profiling_data.xlsx", "Bio")
 
 kol['Vlookup Name']=['(Blank)']*len(kol_name)
 
@@ -228,4 +228,4 @@ kol_df['Reference2']=['(Blank)']*len(kol_name)
 kol_df['Reference3']=['(Blank)']*len(kol_name)
     
 kol_df = kol_df.sort_values("Kol Rank")
-kol_df.to_excel("C://Users//hi//django_project//uploads//media//profiling_output_rank.xlsx", index=False)
+kol_df.to_excel("uploads//media//profiling_output_rank.xlsx", index=False)
