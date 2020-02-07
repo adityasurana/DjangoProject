@@ -126,6 +126,4 @@ dmypy.json
 
 .DS_Store
 
-staticfiles
-media
 *.sqlite3

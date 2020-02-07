@@ -41,7 +41,7 @@ def get_all_tweets(screen_name):
             tweet_text.append(tweet.text.encode("utf-8"))
             usr_screen_name.append(screen_name)
 
-twitter_kol = pd.read_excel("C://Users//hi//django_project//uploads//media//twitter//Twitter_ID.xlsx")
+twitter_kol = pd.read_excel("C://Users//hi//django_project//uploads//media//Twitter_ID.xlsx")
 for j in twitter_kol.iloc[0:,0].unique():
     i=j.split('@')[1]
     try:

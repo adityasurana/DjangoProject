@@ -46,7 +46,7 @@ def twitter_tool(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
-        rs = OverwriteStorage().get_available_name(myfile.name)
+        rs = OverwriteStorage().get_available_name_tweet(myfile.name) 
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
         return render(request, 'core/twitter_tool.html', {
@@ -80,6 +80,17 @@ class OverwriteStorage(FileSystemStorage):
             self.exists(name)
             print("inside class:", os.path.join('C://Users//hi//django_project//uploads//media//', name))
             os.remove(os.path.join('C://Users//hi//django_project//uploads//media//', name))
+            return name
+        except:
+            pass
+
+    def get_available_name_tweet(self, name):
+        try:
+            filePath = 'C://Users//hi//django_project//uploads//media//twitter//%s' %name      
+            if os.path.exists(filePath):
+                os.remove(filePath)
+            # print("inside class:", os.path.join('C://Users//hi//django_project//uploads//media//twitter//', name))
+            # os.remove(os.path.join('C://Users//hi//django_project//uploads//media//twitter//', name))
             return name
         except:
             pass
