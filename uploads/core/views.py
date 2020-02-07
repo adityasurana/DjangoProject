@@ -24,7 +24,7 @@ def home(request):
         uploaded_file_url = fs.url(filename)
         print(uploaded_file_url)
         return render(request, 'core/home.html', {
-            'uploaded_file_url': "C://Users//hi//django_project/%s" % uploaded_file_url
+            'uploaded_file_url': "%s" % uploaded_file_url
         })
     return render(request, 'core/home.html')
     
@@ -50,19 +50,19 @@ def twitter_tool(request):
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
         return render(request, 'core/twitter_tool.html', {
-            'uploaded_file_url': "C://Users//hi//django_project/%s" % uploaded_file_url
+            'uploaded_file_url': "%s" % uploaded_file_url
         })
     return render(request, 'core/twitter_tool.html')
 
 
 def tweet_upload(request):
-     out=run([sys.executable, "C://Users//hi//django_project//uploads//media//twitter//tweet_upload.py"], shell=False, stdout=PIPE)
+     out=run([sys.executable, "uploads//media//twitter//tweet_upload.py"], shell=False, stdout=PIPE)
      print(out.stdout)
      return render(request, 'core/twitter_tool.html',{'data3':out.stdout})
 
 def tweet(request):
     inp=request.POST.get('param')
-    out=run([sys.executable, "C://Users//hi//django_project//uploads//media//twitter//tweet.py",inp], shell=False, stdout=PIPE)
+    out=run([sys.executable, "uploads//media//twitter//tweet.py",inp], shell=False, stdout=PIPE)
     a=out.stdout
     b=a[0:]
     c=b[0:]
@@ -78,15 +78,15 @@ class OverwriteStorage(FileSystemStorage):
     def get_available_name(self, name):
         try: 
             self.exists(name)
-            print("inside class:", os.path.join('C://Users//hi//django_project//uploads//media//', name))
-            os.remove(os.path.join('C://Users//hi//django_project//uploads//media//', name))
+            print("inside class:", os.path.join('uploads//media//', name))
+            os.remove(os.path.join('uploads//media//', name))
             return name
         except:
             pass
 
     def get_available_name_tweet(self, name):
         try:
-            filePath = 'C://Users//hi//django_project//uploads//media//twitter//%s' %name      
+            filePath = 'uploads//media//twitter//%s' %name      
             if os.path.exists(filePath):
                 os.remove(filePath)
             # print("inside class:", os.path.join('C://Users//hi//django_project//uploads//media//twitter//', name))
