@@ -52,7 +52,6 @@ for j in twitter_kol.iloc[0:,0].unique():
         pass
 
 for i in tweet_id:
-    print(int(i))
     tweets = api.get_status(int(i))
     try:
         retweet_count.append(tweets.retweet_count)
