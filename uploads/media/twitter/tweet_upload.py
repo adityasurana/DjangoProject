@@ -2,6 +2,8 @@ from tweepy import OAuthHandler
 from tweepy import API
 import tweepy
 import pandas as pd
+import sys
+import os
 
 #Twitter API credentials
 consumer_key = "d9QdJMWqs0ruF6MVYB2KVMrwE"
@@ -58,6 +60,12 @@ for i in tweet_id:
     except:
         retweet_count.append(0)
         like_count.append(0)
+
+filePath = 'uploads//media//twitter//user_tweets.xlsx'        
+if os.path.exists(filePath):
+    os.remove(filePath)
+else:
+    pass
         
 df = pd.DataFrame(list(zip(usr_screen_name, tweet_id, tweet_time, tweet_text, retweet_count, like_count)),
                   columns = ['User Screen Name', 'Tweet Id', 'Tweet Time', 'Tweet Text', 'Retweet Count', 'Like Count'])
