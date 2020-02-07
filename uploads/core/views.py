@@ -24,7 +24,7 @@ def home(request):
         uploaded_file_url = fs.url(filename)
         print(uploaded_file_url)
         return render(request, 'core/home.html', {
-            'uploaded_file_url': "C://Users//hi//django_project//uploads/%s" % uploaded_file_url
+            'uploaded_file_url': "C://Users//hi//django_project/%s" % uploaded_file_url
         })
     return render(request, 'core/home.html')
     
@@ -50,7 +50,7 @@ def twitter_tool(request):
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
         return render(request, 'core/twitter_tool.html', {
-            'uploaded_file_url': "C://Users//hi//django_project//uploads/%s" % uploaded_file_url
+            'uploaded_file_url': "C://Users//hi//django_project/%s" % uploaded_file_url
         })
     return render(request, 'core/twitter_tool.html')
 
