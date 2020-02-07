@@ -73,7 +73,7 @@ def get_all_tweets(screen_name):
             like_count.append(0)
 
 get_all_tweets(sys.argv[1])
-filePath = 'C://Users//hi//django_project//uploads//media//twitter//user_tweets.xlsx'        
+filePath = 'uploads//media//twitter//user_tweets.xlsx'        
 if os.path.exists(filePath):
     os.remove(filePath)
 else:
@@ -81,7 +81,7 @@ else:
         
 df = pd.DataFrame(list(zip(tweet_id, tweet_time, tweet_text, retweet_count, like_count)),
                   columns = ['Tweet Id', 'Tweet Time', 'Tweet Text', 'Retweet Count', 'Like Count'])
-df.to_excel("C://Users//hi//django_project//uploads//media//twitter//user_tweets.xlsx", index=False)
+df.to_excel("uploads//media//twitter//user_tweets.xlsx", index=False)
 
 
     

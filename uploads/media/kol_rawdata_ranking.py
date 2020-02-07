@@ -1,13 +1,13 @@
 import pandas as pd
 list_column = []
-kol_excel = pd.read_excel("C://Users//hi//django_project//uploads//media//raw_data.xlsx", "Raw Data")
+kol_excel = pd.read_excel("uploads//media//raw_data.xlsx", "Raw Data")
 for i in kol_excel.iloc[0]:
     list_column.append(i)
 kol_excel.columns = list_column
 kol_excel.drop(kol_excel.index[:1], inplace=True)
 
-kol_excel.to_csv("C://Users//hi//django_project//uploads//media//kol_data_commasep.txt", sep=',', index=False)
-file_name = 'C://Users//hi//django_project//uploads//media//kol_data_commasep.txt'
+kol_excel.to_csv("uploads//media//kol_data_commasep.txt", sep=',', index=False)
+file_name = 'uploads//media//kol_data_commasep.txt'
 kol = pd.read_csv(file_name, sep=',')
 
 kol_name = kol['Full Name'].unique()
@@ -46,7 +46,7 @@ PATIENT_GROUP_Count_aggregate =          [0]*len(kol_name)
 Social_Media_aggregate =                 [0]*len(kol_name)          #not known
 
 
-file = open("C://Users//hi//django_project//uploads//media//input_raw_data.txt", "r")
+file = open("uploads//media//input_raw_data.txt", "r")
 data_list = []
 for line in file:
     data = list(line.strip().split(','))
@@ -155,7 +155,7 @@ for line in file:
     else:
         continue
         
-kol = pd.read_csv('C://Users//hi//django_project//uploads//media//kol_data_commasep.txt', sep=',')
+kol = pd.read_csv('uploads//media//kol_data_commasep.txt', sep=',')
 
 vlookup=[]
 kol_id=[]
@@ -280,4 +280,4 @@ kol_df['Reference2']=['(Blank)']*len(kol_name)
 kol_df['Reference3']=['(Blank)']*len(kol_name)
 
 kol_df = kol_df.sort_values("Kol Rank")
-kol_df.to_excel("C://Users//hi//django_project//uploads//media//rawdata_output_rank.xlsx", index=False)
+kol_df.to_excel("uploads//media//rawdata_output_rank.xlsx", index=False)
