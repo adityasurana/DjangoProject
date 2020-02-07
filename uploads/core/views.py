@@ -30,12 +30,12 @@ def home(request):
     
 
 def external(request):
-    out=run([sys.executable, "C://Users//hi//django_project//uploads//media//kol_rawdata_ranking.py"], shell=False, stdout=PIPE)
+    out=run([sys.executable, "uploads//media//kol_rawdata_ranking.py"], shell=False, stdout=PIPE)
     print(out.stdout)
     return render(request, 'core/home.html',{'data1':out.stdout}) 
 
 def internal(request):
-     out=run([sys.executable, "C://Users//hi//django_project//uploads//media//kol_profiling_ranking.py"], shell=False, stdout=PIPE)
+     out=run([sys.executable, "uploads//media//kol_profiling_ranking.py"], shell=False, stdout=PIPE)
      print(out.stdout)
      # print(render(request, 'core/home.html',{'data2':out.stdout}))
      return render(request, 'core/home.html',{'data2':out.stdout})
