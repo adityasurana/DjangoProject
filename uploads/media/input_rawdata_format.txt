@@ -1,0 +1,17 @@
+Column Name,Attribute Name,Weightage
+
+Project_Data_Point,CONGRESS,4
+Project_Data_Point,CONGRESS,Organization_Committee,Breast Cancer,10
+Project_Data_Point,TRIAL_Breast Cancer,12
+Project_Data_Point,TRIALS,Organization_Committee,Breast Cancer,20
+Role,Principal Investigator,25
+Project_Data_Point,PUBLICATIONS,2
+First Author,1,2
+Project_Data_Point,PUBLICATIONS,Organization_Committee,Breast Cancer,10
+Project_Data_Point,ACADEMIC,3
+Project_Data_Point,ASSOCIATION,2
+Project_Data_Point,GUIDELINE,2
+Project_Data_Point,HOSPITAL,2
+Project_Data_Point,JOURNAL,2
+Project_Data_Point,PATIENT GROUP,2
+Organization_Committee,Social Media,2
