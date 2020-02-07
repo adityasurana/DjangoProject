@@ -54,7 +54,7 @@ for line in file:
     filename = data[0]
     
     # Passing the Sheet name to read the data from
-    kol = pd.read_excel("C://Users//hi//django_project//uploads//media//Profiling_data.xlsx", filename)
+    kol = pd.read_excel("C://Users//hi//django_project//uploads//media//profiling_data.xlsx", filename)
     
     eventcount = []
     
