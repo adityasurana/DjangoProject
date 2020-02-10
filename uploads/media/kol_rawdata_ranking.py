@@ -1,4 +1,8 @@
 import pandas as pd
+import time
+start = time.process_time()
+# your code here    
+
 list_column = []
 kol_excel = pd.read_excel("uploads//media//raw_data.xlsx", "Raw Data")
 for i in kol_excel.iloc[0]:
@@ -155,8 +159,7 @@ for line in file:
     else:
         continue
         
-kol = pd.read_csv('uploads//media//kol_data_commasep.txt', sep=',')
-
+##############################kol = pd.read_csv('uploads//media//kol_data_commasep.txt', sep=',')
 vlookup=[]
 kol_id=[]
 last_name=[]
@@ -281,3 +284,5 @@ kol_df['Reference3']=['(Blank)']*len(kol_name)
 
 kol_df = kol_df.sort_values("Kol Rank")
 kol_df.to_excel("uploads//media//rawdata_output_rank.xlsx", index=False)
+print("hi")
+print(time.process_time() - start)
