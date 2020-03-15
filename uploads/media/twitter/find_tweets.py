@@ -6,10 +6,10 @@ import sys
 import os
 
 #Twitter API credentials
-consumer_key = "d9QdJMWqs0ruF6MVYB2KVMrwE"
-consumer_secret = "iGdgai3LXoaMVfdpofB5B2Upn8vIvpYjMFBgpfahpTLotUa3iQ"
-access_token = "1096115767320313856-o3aWDahEVpPbA3Rcif3l5AwJMOwKZr"
-access_token_secret = "R6ZWkjqyc96fAaeJg9fQOZBubCa9kSV04j4g4eRFMIEko"
+consumer_key = "Enter your consumer key"
+consumer_secret = "Enter your consumer secret"
+access_token = "Enter your access token"
+access_token_secret = "Enter your access token secret"
 
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
@@ -72,13 +72,9 @@ def get_all_tweets(screen_name):
             retweet_count.append(0)
             like_count.append(0)
 
-get_all_tweets(sys.argv[1])
-dir_path = os.path.dirname(os.path.realpath(__file__))
-filePath = "%s\\user_tweets.xlsx" %dir_path
-if os.path.exists(filePath):
-    os.remove(filePath)
-else:
-    pass
+screen_name = input("Enter the screen name of the person whoose tweets is to be extracted")
+get_all_tweets(screen_name)
+
         
 df = pd.DataFrame(list(zip(tweet_id, tweet_time, tweet_text, retweet_count, like_count)),
                   columns = ['Tweet Id', 'Tweet Time', 'Tweet Text', 'Retweet Count', 'Like Count'])

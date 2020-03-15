@@ -60,7 +60,8 @@ for i in tweet_id:
         retweet_count.append(0)
         like_count.append(0)
 
-filePath = 'uploads//media//twitter//user_tweets.xlsx'        
+dir_path = os.path.dirname(os.path.realpath(__file__))
+filePath = "%s\\user_tweets.xlsx" %dir_path   
 if os.path.exists(filePath):
     os.remove(filePath)
 else:
@@ -68,4 +69,6 @@ else:
         
 df = pd.DataFrame(list(zip(usr_screen_name, tweet_id, tweet_time, tweet_text, retweet_count, like_count)),
                   columns = ['User Screen Name', 'Tweet Id', 'Tweet Time', 'Tweet Text', 'Retweet Count', 'Like Count'])
-df.to_excel("uploads//media//twitter//user_tweets.xlsx", index=False)
+outputfile_path = "%s\\user_tweets.xlsx" %dir_path
+df.to_excel(outputfile_path, index=False)
+

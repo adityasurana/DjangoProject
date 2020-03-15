@@ -1,18 +1,21 @@
 import pandas as pd
-import time
-start = time.process_time()
+import os
 # your code here    
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+excelfile_path = "%s\\raw_data.xlsx" %dir_path
+kol_excel = pd.read_excel(excelfile_path, "Raw Data")
+
 list_column = []
-kol_excel = pd.read_excel("uploads//media//raw_data.xlsx", "Raw Data")
 for i in kol_excel.iloc[0]:
     list_column.append(i)
 kol_excel.columns = list_column
 kol_excel.drop(kol_excel.index[:1], inplace=True)
 
-kol_excel.to_csv("uploads//media//kol_data_commasep.txt", sep=',', index=False)
-file_name = 'uploads//media//kol_data_commasep.txt'
-kol = pd.read_csv(file_name, sep=',')
+
+textfile="%s\kol_data_commasep.txt" %dir_path
+kol_excel.to_csv(textfile, sep=',', index=False)
+kol = pd.read_csv(textfile, sep=',')
 
 kol_name = kol['Full Name'].unique()
 kol_score = [0]*len(kol_name)
@@ -50,7 +53,9 @@ PATIENT_GROUP_Count_aggregate =          [0]*len(kol_name)
 Social_Media_aggregate =                 [0]*len(kol_name)          #not known
 
 
-file = open("uploads//media//input_raw_data.txt", "r")
+#opening and reading "input_raw_data.txt"file
+file_path = "%s\input_raw_data.txt" %dir_path
+file = open(file_path, "r")
 data_list = []
 for line in file:
     data = list(line.strip().split(','))
@@ -283,6 +288,6 @@ kol_df['Reference2']=['(Blank)']*len(kol_name)
 kol_df['Reference3']=['(Blank)']*len(kol_name)
 
 kol_df = kol_df.sort_values("Kol Rank")
-kol_df.to_excel("uploads//media//rawdata_output_rank.xlsx", index=False)
-print("hi")
-print(time.process_time() - start)
+
+outputfile_path = "%s\\rawdata_output_rank.xlsx" %dir_path
+kol_df.to_excel(outputfile_path, index=False)

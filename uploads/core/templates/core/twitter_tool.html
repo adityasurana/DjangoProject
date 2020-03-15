@@ -8,11 +8,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
-      /* Remove the navbar's default margin-bottom and rounded borders */
-
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        
+        .body {
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        
         .nav-color {
-            background-color: #AEBAC2;
-            border-color: #AEBAC2;
+            background-color: #3f515d;
+            border-color: #80533d;
         }
         
         .navbar {
@@ -28,15 +33,17 @@
         
         .sidenav {
             padding-top: 20px;
-            background-color: #f1f1f1;
-            height: 100%;
+            /* background-color: #f1f1f1; */
+            background: #578fbb;
+            /* height: 100%; */
+            height: 675px;
         }
         /* Set black background color, white text and some padding */
         
-        .footer {
+        footer {
             background-color: #555;
             color: white;
-            padding: 15px;
+            padding: 16px;
         }
         /* On small screens, set height to 'auto' for sidenav and grid */
         
@@ -46,14 +53,13 @@
             font-family: initial;
         }
         
-        
         .txt-format {
             font-family: monospace;
         }
         
         .side-margin {
             margin-left: 0px;
-            margin-right: 50px;
+            margin-right: 150px;
         }
         
         .side-menu {
@@ -63,24 +69,38 @@
         }
         
         .tool-name {
-            margin-left: -200px;
-            font-weight: 700;
-            font-family: initial;
+            margin-left: -10px;
+            font-weight: 900;
+            color: #fff;
         }
         
         .img {
-            width: 30%;
-            margin-top: -15px;
+            width: 33%;
+            margin-top: -22px;
         }
         
-
+        .page-card {
+            border-radius: 6px;
+            /* box-shadow: 2px 1px 20px 0 rgba(0, 0, 0, 0.06); */
+            box-shadow: 4px 1px 15px 8px rgba(0, 0, 0, 0.06);
+            background-color: #ffffff;
+            margin-top: 20px;
+            padding-bottom: 24px;
+            padding-top: 12px;
+            padding-left: 40px;
+        }
+        
+        .top-gap45 {
+            margin-top: 45px;
+        }
+        
         .navbar-inverse .navbar-nav>.active>a,
         .navbar-inverse .navbar-nav>.active>a:focus,
         .navbar-inverse .navbar-nav>.active>a:hover {
             color: #fff !important;
             background-color: #AEBAC2;
         }
-
+        
         .loader {
             border: 16px solid #f3f3f3;
             border-top: 16px solid #3498db;
@@ -89,21 +109,34 @@
             height: 50px;
             animation: spin 2s linear infinite;
         }
-
+        
+        .btn-position {
+            margin-left: 180px;
+            margin-top: 22px;
+        }
+        
+        .input-type {
+            border-radius: 5px;
+            border: 1px solid;
+            font-size: 18px;
+        }
+        
+        .red {
+            color: #ff2020;
+        }
+        
         @keyframes spin {
             0% {
                 transform: rotate(0deg);
             }
-
             100% {
                 transform: rotate(360deg);
             }
         }
-
+        
         .hide-loader {
             display: none;
         }
-
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -114,15 +147,25 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-                <!-- <a class="navbar-brand" href="#"> <img src="uploads/media/twitter/tweet.jpg" class="img"> </a> -->
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <p>
+                    <p>
+                        <a class="navbar-brand" href="/twitter_tool/"> <img src="/uploads/media/twitter/tweet.jpg" class="img"> </a>
+                    </p>
+                </p>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#" class="tool-name">TWITTER TOOL</a></li>
+                    <p>
+                        <ul>
+                            <ul>
+                                <li class="active"><a class="tool-name">TWITTER TOOL</a></li>
+                            </ul>
+                        </ul>
+                    </p>
                 </ul>
             </div>
         </div>
@@ -140,62 +183,74 @@
             </div>
             <div class="col-sm-10 text-left">
                 <div class="row">
-                    <div class="col-sm-2"></div>
+                    <div class="col-sm-6">
+                        <div class="page-card top-gap24">
+                            <div class="top-gap12">
+                                <a href="/uploads/media/twitter/twitter_data_format.xlsx" download class="txt-header"> Download Input Twitter Data Format File</a>
+                            </div>
 
-                    <div class="col-sm-8">
-                        <div class="top-gap24">
                             <form method="post" enctype="multipart/form-data">
-                                 {% csrf_token %} 
+                                {% csrf_token %}
                                 <div class="row well side-margin">
                                     <div class="col-sm-8">
                                         <input type='file' name="myfile" .... onchange='this.form.submit();'>
                                     </div>
                                 </div>
-                                 {% csrf_token %} 
+                                {% csrf_token %}
                             </form>
+
+                            <div class="top-gap12">
+                                {% if uploaded_file_url %}
+                                <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+                                {% endif %}
+                            </div>
+
+                            <form action='/tweet_upload/' method="post" class="btn-position">
+                                {% csrf_token %}
+                                <button type="submit" value="click" id="hide1" class="btn btn-success">Run For Tweets File</button>
+                                <div class="loader" id="loader1" onload="hideme1()"></div>
+                                {% csrf_token %}
+                            </form>
+                            <p class="top-gap45"><a class="red">Note*: Name of the uploaded file should be "Twitter_ID.xlsx"</a></p>
                         </div>
 
-                        <div class="top-gap12">
-                             {% if uploaded_file_url %} 
-                            <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-                             {% endif %} 
-                        </div>
-
-                        <form action='/tweet_upload/' method="post">
-                             {% csrf_token %}
-                             <button type="submit" value="click" id="hide1" >Run For Tweets File</button>
-                             <div class="loader" id="loader1" onload="hideme1()"></div>
-                             {% csrf_token %} 
-                        </form>
-
-
-                        <form action='/tweet/' method="post">
-                             {% csrf_token %} 
-                             Input User Name :
-                             <input type="text" name="param" required>
-                             <button type="submit" value="click" id="hide" >Run For Getting Tweet File</button>
-                             <div class="loader" id="loader" onload="hideme()"></div>
-                             {% csrf_token %}
-                        </form>
-                        
-                        <div class="top-gap12">
-                            <a href="/uploads/media/twitter/user_tweets.xlsx" download class="txt-header"> Download Tweets File </a>
-                        </div>
-                        <div class="top-gap12">
-                            <a href="/uploads/media/twitter/twitter_data_format.xlsx" download class="txt-header"> Download Input Twitter Data Format File</a>
-                        </div>
-                        <p><a>Note: Name of the uploaded file should be "Twitter_ID.xlsx"</a></p>
-                        <p><a>Note: Give the user name of the person whose tweet is to be extracted, after'@' </a></p>
                     </div>
-                    <div class="col-sm-2"></div>
+                    <div class="col-sm-6">
+                        <div class="page-card" style="height:290px">
+                            <form action='/tweet/' method="post">
+                                {% csrf_token %}
+                                Input User Name :
+                                <input type="text" name="param" required class="input-type">
+                                <button type="submit" value="click" id="hide" class="btn btn-success top-gap45">Run For Getting Tweet File</button>
+                                <div class="loader" id="loader" onload="hideme()"></div>
+                                {% csrf_token %}
+                            </form>
+                            <p class="top-gap45"><a class="red">Note*: Give the user name of the person whose tweet is to be extracted, after'@' </a></p>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-2"></div> -->
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                        <p>&ensp;
+                        </p>
+                        <p>&ensp;
+                        </p>
+                        <div class="page-card">
+                            <a href="/uploads/media/twitter/user_tweets.xlsx" download class="txt-header" style="margin-left:62px;"> Download Tweets File </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4"></div>
                 </div>
             </div>
         </div>
     </div>
-
     <footer class="container-fluid text-center nav-color">
         <p class="side-menu">COPYRIGHTS 2017 @ GLOCALMIND.ALL RIGHT RESERVED.</p>
     </footer>
+
 
     <script>
         function hideme() {
@@ -203,21 +258,20 @@
         }
         hideme();
 
-        $("#hide").click(function () {
-                $("#loader").show();
-            });
+        $("#hide").click(function() {
+            $("#loader").show();
+        });
 
         function hideme1() {
             $('#loader1').hide();
         }
         hideme1();
-            
-        $("#hide1").click(function () {
-                $("#loader1").show();
-            });
-        
+
+        $("#hide1").click(function() {
+            $("#loader1").show();
+        });
     </script>
-    {% endblock %} 
+    {% endblock %}
 </body>
 
 </html>

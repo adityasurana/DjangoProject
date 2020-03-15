@@ -1,11 +1,14 @@
 import pandas as pd
-
+import os 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+excelfile_path = "%s\\profiling_data.xlsx" %dir_path
 # Reading excel file "Profiling_data.xlsx", Sheet Name="Bio" with dataframe name as 'kol'  
-kol = pd.read_excel("uploads//media//profiling_data.xlsx", "Bio")
+kol = pd.read_excel(excelfile_path, "Bio")
 kol_name = kol['KOL Name'].unique() #storing all unique names from the excel to a list name 'kol_name'
 
 #opening and reading "input_profiling.txt"file
-file = open("uploads//media//input_profiling.txt", "r")
+file_path = "%s\\input_profiling.txt" %dir_path
+file = open(file_path, "r")
 
 #Initializing some lists to store different column values in the output ranking file
 kol_score =                    [0]*len(kol_name)
@@ -54,7 +57,7 @@ for line in file:
     filename = data[0]
     
     # Passing the Sheet name to read the data from
-    kol = pd.read_excel("uploads//media//profiling_data.xlsx", filename)
+    kol = pd.read_excel(excelfile_path, filename)
     
     eventcount = []
     
@@ -160,7 +163,7 @@ for line in file:
         Social_Media = eventcount
         Social_Media_aggregate = aggregate_eventcount
                               
-kol = pd.read_excel("uploads//media//profiling_data.xlsx", "Bio")
+kol = pd.read_excel(excelfile_path, "Bio")
 
 kol['Vlookup Name']=['(Blank)']*len(kol_name)
 
@@ -228,4 +231,5 @@ kol_df['Reference2']=['(Blank)']*len(kol_name)
 kol_df['Reference3']=['(Blank)']*len(kol_name)
     
 kol_df = kol_df.sort_values("Kol Rank")
-kol_df.to_excel("uploads//media//profiling_output_rank.xlsx", index=False)
+outputfile_path = "%s\\profiling_output_rank.xlsx" %dir_path
+kol_df.to_excel(outputfile_path, index=False)
