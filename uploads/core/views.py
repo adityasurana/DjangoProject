@@ -65,11 +65,7 @@ def tweet_upload(request):
 def tweet(request):
     inp=request.POST.get('param')
     out=run([sys.executable, "%s\\media\\twitter\\tweet.py" % dir,inp], shell=False, stdout=PIPE)
-    a=out.stdout
-    b=a[0:]
-    c=b[0:]
-    d=c[:-2]
-    return render(request, 'core/twitter_tool.html',{'data4':d})
+    return render(request, 'core/twitter_tool.html',{'data4':out.stdout})
 
 
 
