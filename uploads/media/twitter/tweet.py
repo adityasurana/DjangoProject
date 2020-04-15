@@ -74,8 +74,10 @@ def get_all_tweets(screen_name):
 
 get_all_tweets(sys.argv[1])
 dir_path = os.path.dirname(os.path.realpath(__file__))
+print("dir_path")
 filePath = "%s\\user_tweets.xlsx" %dir_path
 if os.path.exists(filePath):
+    print("removing file")
     os.remove(filePath)
 else:
     pass

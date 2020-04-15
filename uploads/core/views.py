@@ -11,8 +11,9 @@ import sys
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 dir_path=os.path.normpath(os.getcwd() + os.sep + os.pardir)
+print(dir_path)
 #dir = "%s\\djangoproject\\uploads\\" % dir_path
-dir="uploads"
+#dir=uploads
 
 def home(request):
     documents = Document.objects.all()
@@ -33,12 +34,12 @@ def home(request):
     
 
 def external(request):
-    out=run([sys.executable, "%s\\media\\kol_rawdata_ranking.py" % dir], shell=False, stdout=PIPE)
-    print(out.stdout)
+    out=run([sys.executable, "uploads\\media\\kol_rawdata_ranking.py"], shell=False, stdout=PIPE)
+    #print(out.stdout)
     return render(request, 'core/home.html',{'data1':out.stdout}) 
 
 def internal(request):
-     out=run([sys.executable, "%s\\media\\kol_profiling_ranking.py" % dir], shell=False, stdout=PIPE)
+     out=run([sys.executable, "uploads\\media\\kol_profiling_ranking.py"], shell=False, stdout=PIPE)
      return render(request, 'core/home.html',{'data2':out.stdout})
 
 
@@ -46,15 +47,10 @@ def internal(request):
 def twitter_tool(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
-        print(myfile)
-        print("tweet upload")
         fs = FileSystemStorage()
-
-        middle_path = "%smedia" % dir
-        filepath = os.path.join(middle_path,myfile.name) 
-        print(filepath)  
+        middle_path = "uploads\\media"
+        filepath = os.path.join(middle_path,myfile.name)  
         if os.path.exists(filepath):
-            print("removing")
             os.remove(filepath)
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
@@ -65,13 +61,13 @@ def twitter_tool(request):
 
 
 def tweet_upload(request):
-     out=run([sys.executable, "%s\\media\\tweet_upload.py" % dir], shell=False, stdout=PIPE)
-     print(out.stdout)
+     out=run([sys.executable, "uploads\\media\\tweet_upload.py"], shell=False, stdout=PIPE)
+     #print(out.stdout)
      return render(request, 'core/twitter_tool.html',{'data3':out.stdout})
 
 def tweet(request):
     inp=request.POST.get('param')
-    out=run([sys.executable, "%s\\media\\twitter\\tweet.py" % dir,inp], shell=False, stdout=PIPE)
+    out=run([sys.executable, "uploads\\media\\twitter\\tweet.py",inp], shell=False, stdout=PIPE)
     return render(request, 'core/twitter_tool.html',{'data4':out.stdout})
 
 
@@ -82,10 +78,10 @@ class OverwriteStorage(FileSystemStorage):
     def get_available_name(self, name):
         try: 
             self.exists(name)
-            print(name)
-            path_add = "%smedia" % dir
-            print(path_add)
-            print(os.path.join(path_add,name))
+            #print(name)
+            path_add = "uploads\\media"
+            #print(path_add)
+            #print(os.path.join(path_add,name))
             os.remove(os.path.join(path_add,name))
             return name
         except:
