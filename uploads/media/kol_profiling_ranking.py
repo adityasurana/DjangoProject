@@ -66,11 +66,13 @@ for line in file:
         # Adding data column_names into "column_name" and attributes into "attribute" :
         column_name[i] = data[i]
         attribute[i] = data[i+1]
-        if i==1:
-            # storing the rows according to given (column name and attribute) result :
-            extracting = (kol[column_name[i]] == attribute[i])
-        elif i!=0 and column_name[i] == "Author Position":
+        if column_name[i] == "Author Position" and i!= 1:
             extracting = ((extracting) & (kol[column_name[i]] == int(attribute[i])))
+            # storing the rows according to given (column name and attribute) result :
+        elif column_name[i] == "Author Position" and i == 1:
+            extracting = (kol[column_name[i]] == int(attribute[i]))
+        elif column_name[i] != "Author Position" and i == 1:
+            extracting = (kol[column_name[i]] == attribute[i])           
         else:
             extracting = ((extracting) & (kol[column_name[i]] == attribute[i]))
             

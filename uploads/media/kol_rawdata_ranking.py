@@ -5,7 +5,6 @@ import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 excelfile_path = "%s\\raw_data.xlsx" %dir_path
 kol_excel = pd.read_excel(excelfile_path, "Raw Data")
-
 list_column = []
 for i in kol_excel.iloc[0]:
     list_column.append(i)
@@ -16,7 +15,6 @@ kol_excel.drop(kol_excel.index[:1], inplace=True)
 textfile="%s\kol_data_commasep.txt" %dir_path
 kol_excel.to_csv(textfile, sep=',', index=False)
 kol = pd.read_csv(textfile, sep=',')
-
 kol_name = kol['Full Name'].unique()
 kol_score = [0]*len(kol_name)
 

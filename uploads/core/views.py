@@ -12,7 +12,6 @@ import sys
 dir_path = os.path.dirname(os.path.realpath(__file__))
 dir_path=os.path.normpath(os.getcwd() + os.sep + os.pardir)
 dir = "%s\\djangoproject\\uploads\\" % dir_path
-#print(dir)
 
 def home(request):
     documents = Document.objects.all()
@@ -39,7 +38,6 @@ def external(request):
 
 def internal(request):
      out=run([sys.executable, "%s\\media\\kol_profiling_ranking.py" % dir], shell=False, stdout=PIPE)
-     #print(out.stdout)
      return render(request, 'core/home.html',{'data2':out.stdout})
 
 
@@ -47,8 +45,16 @@ def internal(request):
 def twitter_tool(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
+        print(myfile)
+        print("tweet upload")
         fs = FileSystemStorage()
-        rs = OverwriteStorage().get_available_name_tweet(myfile.name) 
+
+        middle_path = "%smedia" % dir
+        filepath = os.path.join(middle_path,myfile.name) 
+        print(filepath)  
+        if os.path.exists(filepath):
+            print("removing")
+            os.remove(filepath)
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
         return render(request, 'core/twitter_tool.html', {
@@ -58,7 +64,7 @@ def twitter_tool(request):
 
 
 def tweet_upload(request):
-     out=run([sys.executable, "%s\\media\\twitter\\tweet_upload.py" % dir], shell=False, stdout=PIPE)
+     out=run([sys.executable, "%s\\media\\tweet_upload.py" % dir], shell=False, stdout=PIPE)
      print(out.stdout)
      return render(request, 'core/twitter_tool.html',{'data3':out.stdout})
 
@@ -84,16 +90,16 @@ class OverwriteStorage(FileSystemStorage):
         except:
             pass
 
-    def get_available_name_tweet(self, name):
-        try:
-            print(name)
-            middle_path = "%smedia" % dir
-            #print(middle_path, "middle")
-            filepath = os.path.join(middle_path,name)  
-            #print(filepath)  
-            if os.path.exists(filepath):
-                os.remove(filepath)
-                #print("file removed")
-            return name
-        except:
-            pass
+    # def get_available_name_tweet(self, name):
+    #     try:
+    #         print(name)
+    #         middle_path = "%smedia" % dir
+    #         filepath = os.path.join(middle_path,name) 
+    #         print(filepath)  
+    #         if os.path.exists(filepath):
+    #             print("removing")
+    #             os.remove(filepath)
+    #         print(self.name)
+    #         return name
+    #     except:
+    #         pass
