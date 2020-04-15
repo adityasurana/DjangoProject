@@ -34,12 +34,12 @@ def home(request):
     
 
 def external(request):
-    out=run([sys.executable, "uploads\\media\\kol_rawdata_ranking.py"], shell=False, stdout=PIPE)
+    out=run([sys.executable, "\\uploads\\media\\kol_rawdata_ranking.py"], shell=False, stdout=PIPE)
     #print(out.stdout)
     return render(request, 'core/home.html',{'data1':out.stdout}) 
 
 def internal(request):
-     out=run([sys.executable, "uploads\\media\\kol_profiling_ranking.py"], shell=False, stdout=PIPE)
+     out=run([sys.executable, "\\uploads\\media\\kol_profiling_ranking.py"], shell=False, stdout=PIPE)
      return render(request, 'core/home.html',{'data2':out.stdout})
 
 
@@ -61,13 +61,13 @@ def twitter_tool(request):
 
 
 def tweet_upload(request):
-     out=run([sys.executable, "uploads\\media\\tweet_upload.py"], shell=False, stdout=PIPE)
+     out=run([sys.executable, "\\uploads\\media\\tweet_upload.py"], shell=False, stdout=PIPE)
      #print(out.stdout)
      return render(request, 'core/twitter_tool.html',{'data3':out.stdout})
 
 def tweet(request):
     inp=request.POST.get('param')
-    out=run([sys.executable, "uploads\\media\\twitter\\tweet.py",inp], shell=False, stdout=PIPE)
+    out=run([sys.executable, "\\uploads\\media\\twitter\\tweet.py",inp], shell=False, stdout=PIPE)
     return render(request, 'core/twitter_tool.html',{'data4':out.stdout})
 
 
