@@ -11,7 +11,8 @@ import sys
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 dir_path=os.path.normpath(os.getcwd() + os.sep + os.pardir)
-dir = "%s\\djangoproject\\uploads\\" % dir_path
+#dir = "%s\\djangoproject\\uploads\\" % dir_path
+dir="uploads"
 
 def home(request):
     documents = Document.objects.all()
