@@ -43,9 +43,7 @@ def get_all_tweets(screen_name):
             tweet_text.append(tweet.text.encode("utf-8"))
             usr_screen_name.append(screen_name)
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-#print(dir_path)
-twitter_kol = pd.read_excel("%s\\Twitter_ID.xlsx" %dir_path)
+twitter_kol = pd.read_excel("uploads/media/Twitter_ID.xlsx")
 for j in twitter_kol.iloc[0:,0].unique():
     i=j.split('@')[1]
     try:
@@ -62,8 +60,7 @@ for i in tweet_id:
         retweet_count.append(0)
         like_count.append(0)
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-filePath = "%s\\twitter\\user_tweets.xlsx" %dir_path   
+filePath = "uploads/media/twitter/user_tweets.xlsx"  
 if os.path.exists(filePath):
     os.remove(filePath)
 else:
@@ -71,6 +68,6 @@ else:
         
 df = pd.DataFrame(list(zip(usr_screen_name, tweet_id, tweet_time, tweet_text, retweet_count, like_count)),
                   columns = ['User Screen Name', 'Tweet Id', 'Tweet Time', 'Tweet Text', 'Retweet Count', 'Like Count'])
-outputfile_path = "%s\\twitter\\user_tweets.xlsx" %dir_path
+outputfile_path = "uploads/media/twitter/user_tweets.xlsx"
 df.to_excel(outputfile_path, index=False)
 

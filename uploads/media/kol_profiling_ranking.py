@@ -1,13 +1,12 @@
 import pandas as pd
-import os 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-excelfile_path = "%s\\profiling_data.xlsx" %dir_path
+import os
+excelfile_path = "uploads/media/profiling_data.xlsx"
 # Reading excel file "Profiling_data.xlsx", Sheet Name="Bio" with dataframe name as 'kol'  
 kol = pd.read_excel(excelfile_path, "Bio")
 kol_name = kol['KOL Name'].unique() #storing all unique names from the excel to a list name 'kol_name'
 
 #opening and reading "input_profiling.txt"file
-file_path = "%s\\input_profiling.txt" %dir_path
+file_path = "uploads/media/input_profiling.txt"
 file = open(file_path, "r")
 
 #Initializing some lists to store different column values in the output ranking file
@@ -233,5 +232,5 @@ kol_df['Reference2']=['(Blank)']*len(kol_name)
 kol_df['Reference3']=['(Blank)']*len(kol_name)
     
 kol_df = kol_df.sort_values("Kol Rank")
-outputfile_path = "%s\\profiling_output_rank.xlsx" %dir_path
+outputfile_path = "uploads/media/profiling_output_rank.xlsx"
 kol_df.to_excel(outputfile_path, index=False)

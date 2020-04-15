@@ -1,9 +1,7 @@
 import pandas as pd
 import os
-# your code here    
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-excelfile_path = "%s\\raw_data.xlsx" %dir_path
+excelfile_path = "uploads/media/raw_data.xlsx"
 kol_excel = pd.read_excel(excelfile_path, "Raw Data")
 list_column = []
 for i in kol_excel.iloc[0]:
@@ -11,8 +9,7 @@ for i in kol_excel.iloc[0]:
 kol_excel.columns = list_column
 kol_excel.drop(kol_excel.index[:1], inplace=True)
 
-
-textfile="%s\kol_data_commasep.txt" %dir_path
+textfile="uploads/media/kol_data_commasep.txt"
 kol_excel.to_csv(textfile, sep=',', index=False)
 kol = pd.read_csv(textfile, sep=',')
 kol_name = kol['Full Name'].unique()
@@ -52,7 +49,7 @@ Social_Media_aggregate =                 [0]*len(kol_name)          #not known
 
 
 #opening and reading "input_raw_data.txt"file
-file_path = "%s\input_raw_data.txt" %dir_path
+file_path = "uploads/media/input_raw_data.txt"
 file = open(file_path, "r")
 data_list = []
 for line in file:
@@ -287,5 +284,5 @@ kol_df['Reference3']=['(Blank)']*len(kol_name)
 
 kol_df = kol_df.sort_values("Kol Rank")
 
-outputfile_path = "%s\\rawdata_output_rank.xlsx" %dir_path
+outputfile_path = "uploads/media/rawdata_output_rank.xlsx"
 kol_df.to_excel(outputfile_path, index=False)

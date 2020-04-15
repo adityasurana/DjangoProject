@@ -9,11 +9,6 @@ from subprocess import run,PIPE
 import os
 import sys
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-dir_path=os.path.normpath(os.getcwd() + os.sep + os.pardir)
-print(dir_path)
-#dir = "%s\\djangoproject\\uploads\\" % dir_path
-#dir=uploads
 
 def home(request):
     documents = Document.objects.all()
@@ -35,7 +30,6 @@ def home(request):
 
 def external(request):
     out=run([sys.executable, "uploads/media/kol_rawdata_ranking.py"], shell=False, stdout=PIPE)
-    #print(out.stdout)
     return render(request, 'core/home.html',{'data1':out.stdout}) 
 
 def internal(request):
@@ -62,7 +56,6 @@ def twitter_tool(request):
 
 def tweet_upload(request):
      out=run([sys.executable, "uploads/media/tweet_upload.py"], shell=False, stdout=PIPE)
-     #print(out.stdout)
      return render(request, 'core/twitter_tool.html',{'data3':out.stdout})
 
 def tweet(request):
@@ -78,25 +71,8 @@ class OverwriteStorage(FileSystemStorage):
     def get_available_name(self, name):
         try: 
             self.exists(name)
-            #print(name)
             path_add = "uploads/media"
-            #print(path_add)
-            #print(os.path.join(path_add,name))
             os.remove(os.path.join(path_add,name))
             return name
         except:
             pass
-
-    # def get_available_name_tweet(self, name):
-    #     try:
-    #         print(name)
-    #         middle_path = "%smedia" % dir
-    #         filepath = os.path.join(middle_path,name) 
-    #         print(filepath)  
-    #         if os.path.exists(filepath):
-    #             print("removing")
-    #             os.remove(filepath)
-    #         print(self.name)
-    #         return name
-    #     except:
-    #         pass
