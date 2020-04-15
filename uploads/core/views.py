@@ -42,8 +42,7 @@ def twitter_tool(request):
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
-        middle_path = "uploads/media"
-        filepath = os.path.join(middle_path,myfile.name)  
+        filepath = "uploads/media/Twitter_ID.xlsx" 
         if os.path.exists(filepath):
             os.remove(filepath)
         filename = fs.save(myfile.name, myfile)
