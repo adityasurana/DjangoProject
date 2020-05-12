@@ -3,71 +3,71 @@
             overflow-y: hidden;
 }
         
-        .nav-color {
+.nav-color {
             background-color: #3f515d;
             border-color: #80533d;
-        }
+}
         
-        .navbar {
+.navbar {
             margin-bottom: 0;
             border-radius: 0;
-        }
+}
         /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
         
-        .row.content {
+.row.content {
             height: 450px
-        }
+}
         /* Set gray background color and 100% height */
         
-        .sidenav {
+.sidenav {
             padding-top: 20px;
             /* background-color: #f1f1f1; */
             background: #578fbb;
             /* height: 100%; */
             height: 675px;
-        }
+}
         /* Set black background color, white text and some padding */
         
-        footer {
+footer {
             background-color: #555;
             color: white;
             padding: 16px;
-        }
+}
         /* On small screens, set height to 'auto' for sidenav and grid */
         
-        .txt-header {
+.txt-header {
             font-size: initial;
             font-weight: 700;
             font-family: initial;
-        }
+}
         
-        .txt-format {
+.txt-format {
             font-family: monospace;
-        }
+}
         
-        .side-margin {
+.side-margin {
             margin-left: 0px;
             margin-right: 150px;
-        }
+}
         
-        .side-menu {
+.side-menu {
             font-size: 16px;
             font-weight: 700;
             font-family: initial;
-        }
+}
         
-        .tool-name {
+.tool-name {
             margin-left: -10px;
             font-weight: 900;
             color: #fff;
-        }
+}
         
-        .img {
+.img {
             width: 33%;
             margin-top: -22px;
-        }
+}
         
-        .page-card {
+.page-card {
             border-radius: 6px;
             /* box-shadow: 2px 1px 20px 0 rgba(0, 0, 0, 0.06); */
             box-shadow: 4px 1px 15px 8px rgba(0, 0, 0, 0.06);
@@ -76,52 +76,52 @@
             padding-bottom: 24px;
             padding-top: 12px;
             padding-left: 40px;
-        }
+}
         
-        .top-gap45 {
+.top-gap45 {
             margin-top: 45px;
-        }
+}
         
-        .navbar-inverse .navbar-nav>.active>a,
-        .navbar-inverse .navbar-nav>.active>a:focus,
-        .navbar-inverse .navbar-nav>.active>a:hover {
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:focus,
+.navbar-inverse .navbar-nav>.active>a:hover {
             color: #fff !important;
             background-color: #AEBAC2;
-        }
+}
         
-        .loader {
+.loader {
             border: 16px solid #f3f3f3;
             border-top: 16px solid #3498db;
             border-radius: 50%;
             width: 50px;
             height: 50px;
             animation: spin 2s linear infinite;
-        }
+}
         
-        .btn-position {
+.btn-position {
             margin-left: 180px;
             margin-top: 22px;
-        }
+}
         
-        .input-type {
+.input-type {
             border-radius: 5px;
             border: 1px solid;
             font-size: 18px;
-        }
+}
         
-        .red {
+.red {
             color: #ff2020;
-        }
+}
         
-        @keyframes spin {
+@keyframes spin {
             0% {
                 transform: rotate(0deg);
             }
             100% {
                 transform: rotate(360deg);
             }
-        }
+}
         
-        .hide-loader {
+.hide-loader {
             display: none;
-        }
+}
