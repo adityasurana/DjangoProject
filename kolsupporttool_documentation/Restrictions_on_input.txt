@@ -1,0 +1,39 @@
+In order to get the results ---> input_...._.txt file should have these entries:-
+
+for RAW INPUT FILE:-
+
+Congress Count                ->             attribute1 =  CONGRESS OR EVENTS                               (no more attribute allowed ahead)
+1st Author Pub Count          ->             column_name = First Author AND attribute=1
+Clinical Trial Count          ->             attribute1 =  TRIAL_Breast Cancer OR TRIALS                    (no more attribute allowed ahead)
+Breast Cancer Congress Count  ->             attribute1 = CONGRESS and attribute2 = Breast Cancer
+Breast Cancer Trial Count     ->             attribute1 = TRIALS AND attribute2 = Breast Cancer
+Breast Cancer Pubs Count      ->             attribute1 = PUBLICATIONS AND attribute2 = Breast Cancer   
+Principal_Investigator        ->             column_name1 = Role AND attribute1 = Principal Investigator  
+Publication Count             ->             attribute1 = PUBLICATIONS                                       (no more attribute allowed ahead)
+Academic Count                ->             attribute1 = ACADEMIC
+ASSOCIATION_Count             ->             attribute1 = ASSOCIATION
+GUIDELINE_Count               ->             attribute = GUIDELINE
+HOSPITAL_Count                ->             attribute1 = HOSPITAL
+Journal_Count                 ->             attribute1 = JOURNAL
+PATIENT_GROUP_Count           ->             attribute1 = PATIENT GROUP
+Social_Media_Count            ->             column_name1 = Social Media OR attribute1 = Social Media
+
+
+
+for PROFILING INPUT DATA FILE:-
+
+Congress Count                ->             attribute1 = Congress                                            (no more attribute allowed ahead)
+1st Author Pub Count          ->             column_name1 = Author Position and attribute1 = 1
+Clinical Trial Count          ->             column_name1 = Trial Type and attribute1 == Interventional
+Breast Cancer Congress Count  ->             attribute1 = Congress AND attribute2 = Breast Cancer
+Breast Cancer Trial Count     ->             column_name1 = Trial Type AND attribute2 = Breast Cancer
+Breast Cancer Pubs Count      ->             column_name1 = Publication_Type AND attribute2 = Breast Cancer
+Principal_Investigator        ->             column_name1 = Role AND attribute1 = Principal Investigator  
+Publication Count             ->             column_name1 = Publication_Type AND attribute1 = Journal
+Academic Count                ->             column_name1 = Organization_Type AND attribute1 = Academic
+ASSOCIATION_Count             ->             attribute1 = Association
+GUIDELINE_Count               ->             attribute1 = Guideline
+HOSPITAL_Count                ->             column_name1 = Organization_Type AND attribute1 = Hospital
+Journal_Count                 ->             column_name1 = Publication_Type AND attribute1 = Journal
+PATIENT_GROUP_Count           ->             attribute1 = Patient Group
+Social_Media_Count            ->             column_name1 = Social Media OR attribute1 = Social Media

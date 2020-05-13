@@ -1,0 +1,15 @@
+Conference Engagements,Event_Type,Congress,4
+Conference Engagements,Event_Type,Congress,Other Topics,Breast Cancer,10
+Trials,Trial Type,Interventional,12
+Trials,Trial Type,Interventional,Other Topics,Breast Cancer,20
+Trials,Role,Principal Investigator,25
+Publications,Publication_Type,Journal,2
+Publications,Author Position,1,2
+Publications,Publication_Type,Journal,Other Topics,Breast Cancer,10
+Professional Activities,Organization_Type,Academic,3
+Professional Activities,Organization_Type,Association,2
+Professional Activities,Organization_Type,Guideline,2
+Professional Activities,Organization_Type,Hospital,2
+Publications,Publication_Type,Journal,2
+Professional Activities,Organization_Type,Patient Group,2
+Social Media_Accounts,Social Media,Social Media,2

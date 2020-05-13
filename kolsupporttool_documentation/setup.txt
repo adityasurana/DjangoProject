@@ -1,0 +1,35 @@
+Install python 3.x or above for windows10
+
+Download python setup from https://www.python.org/downloads/windows/ 
+Install python
+
+Note: Click on Add python path to environment variables or python to my path while installing
+
+Run these commands on Command Prompt:-
+pip install virtualenv
+pip install django
+
+Now paste all the project files in C drive location "C:\Users\admins\hi"
+You have following files in C:\Users\admin\hi:-
+djangopoject
+Envs
+
+Open Command Prompt and run these commands :-
+cd admin\hi\Envs\myproject 	(navigating to the myproject directory)
+./Scripts/activate	    	(activating the virtual environment)- you will see command line as (myproject) C:\Users\admins\hi\Envs\myproject
+cd ..
+cd ..
+cd djangoproject                (navigating to the djangoproject directory)
+
+Now run:-
+
+pip install pandas
+pip3 install openpyxl
+pip install xlrd
+pip install tweepy==3.8.0
+pip install pylint==2.4.4
+
+python manage.py runserver
+
+After running this you will get a http link copy that and paste in your browser
+And you will direct to the page
