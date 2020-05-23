@@ -6,10 +6,10 @@ import sys
 import os
 
 #Twitter API credentials
-consumer_key = "d9QdJMWqs0ruF6MVYB2KVMrwE"
-consumer_secret = "iGdgai3LXoaMVfdpofB5B2Upn8vIvpYjMFBgpfahpTLotUa3iQ"
-access_token = "1096115767320313856-o3aWDahEVpPbA3Rcif3l5AwJMOwKZr"
-access_token_secret = "R6ZWkjqyc96fAaeJg9fQOZBubCa9kSV04j4g4eRFMIEko"
+consumer_key = "write consumer_key here"
+consumer_secret = "write consumer_secret here"
+access_token = "write access_token here"
+access_token_secret = "write access_token_secret here"
 
 auth = OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
