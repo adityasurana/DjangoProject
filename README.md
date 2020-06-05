@@ -11,7 +11,7 @@ It is divided into two parts
 
 1) file uploading.
 
-2)Giving input screen name of person whose tweet details is to be extracted. 
+2) Giving input screen name of person whose tweet details is to be extracted. 
 
 ![Capture](https://user-images.githubusercontent.com/39646018/82720979-6171be00-9cd6-11ea-9866-8786fc2d6b83.PNG)
 
